@@ -8,7 +8,7 @@ from torch.utils.data import Dataset, DataLoader
 from sklearn.model_selection import train_test_split
 
 # Constants
-DATA_DIR = "captchas"
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "captchas")
 IMG_WIDTH = 200
 IMG_HEIGHT = 40
 CHAR_SET = "0123456789abcdefghijklmnopqrstuvwxyz"

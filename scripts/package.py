@@ -3,7 +3,13 @@ import os
 
 def package_project():
     zip_filename = "qrtop_deploy.zip"
-    include_files = ["app.py", "init_db.py", "static", "templates", "captchas"]
+    include_files = [
+        "server/app.py", 
+        "scripts/init_db.py", 
+        "server/static", 
+        "server/templates", 
+        "data/captchas"
+    ]
     
     with zipfile.ZipFile(zip_filename, 'w', zipfile.ZIP_DEFLATED) as zip_ref:
         for item in include_files:

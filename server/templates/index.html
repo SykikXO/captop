@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Captop - by Sykik</title>
     <title>Sykik Captop - Index the Dataset</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
@@ -14,12 +13,12 @@
         <span>DO 10 CONTRIBUTIONS TO ADD YOUR NAME TO THE CONTRIBUTORS LIST</span>
     </div>
 
-    <div id="reward-toast" class="toast-reward">
-        SUCCESSFULLY COMMITTED TO INDEX 👏🎉
-    </div>
 
     <div id="achievement-modal" class="modal-overlay">
         <div class="modal">
+            <button class="modal-close-btn" onclick="closeAchievement()">
+                <span class="material-symbols-outlined">close</span>
+            </button>
             <span class="material-symbols-outlined"
                 style="font-size: 48px; margin-bottom: 16px; color: gold;">workspace_premium</span>
             <h2>LEVEL UP!</h2>
@@ -33,6 +32,8 @@
     <div class="container">
         <h1>Captop</h1>
         <p class="subtitle">by Sykik / help index the dataset</p>
+        <p class="description">Type exactly what you see in the captcha image below. Your contributions help build a
+            high-quality labeled dataset that will be open-sourced on my GitHub profile for the community.</p>
 
         <div class="progress-container">
             <div class="progress-info">
@@ -62,15 +63,48 @@
             <p style="font-size: 1.25rem; color: var(--accent); font-weight: 700;">All done! Thank you for your help.
             </p>
         </div>
+
     </div>
+
+    <footer class="footer">
+        <a href="https://github.com/sykikxo" target="_blank" rel="noopener noreferrer">
+            <span class="material-symbols-outlined">terminal</span>
+            SYKIK
+        </a>
+    </footer>
 
     <script>
         let currentImageId = null;
         let localContribCount = parseInt(localStorage.getItem('contribCount') || '0');
         let hasReachedMilestone = localStorage.getItem('reachedMilestone') === 'true';
 
+        function setCookie(name, value, days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
         function closeBanner() {
             document.getElementById('contrib-banner').style.display = 'none';
+            setCookie('banner_hidden', 'true', 30);
+        }
+
+        function checkBanner() {
+            if (getCookie('banner_hidden') === 'true' || hasReachedMilestone) {
+                document.getElementById('contrib-banner').style.display = 'none';
+            }
         }
 
         async function loadNext() {
@@ -103,12 +137,20 @@
             document.getElementById('progress-fill').style.width = `${percent}%`;
         }
 
-        function showRewardToast() {
-            const toast = document.getElementById('reward-toast');
-            toast.classList.add('visible');
-            setTimeout(() => {
-                toast.classList.remove('visible');
-            }, 1000);
+        async function showSuccessState() {
+            const btn = document.getElementById('submit-btn');
+            const originalContent = btn.innerHTML;
+
+            const emojis = ['👏', '🎉', '🔥', '✨', '⚡', '🚀', '✅', '🥳', '🙌', '🌟'];
+            const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+
+            btn.classList.add('success');
+            btn.innerHTML = `<span>SAVED! ${randomEmoji}</span>`;
+
+            await new Promise(r => setTimeout(r, 800));
+
+            btn.classList.remove('success');
+            btn.innerHTML = originalContent;
         }
 
         function validateInput() {
@@ -136,13 +178,14 @@
 
                 if (response.ok) {
                     // Success! 
-                    showRewardToast();
                     localContribCount++;
                     localStorage.setItem('contribCount', localContribCount);
 
                     if (localContribCount >= 10 && !hasReachedMilestone) {
                         showAchievement();
                     }
+
+                    await showSuccessState();
                 }
 
                 await loadNext();
@@ -154,6 +197,10 @@
 
         function showAchievement() {
             document.getElementById('achievement-modal').style.display = 'flex';
+        }
+
+        function closeAchievement() {
+            document.getElementById('achievement-modal').style.display = 'none';
         }
 
         async function submitContributor() {
@@ -185,6 +232,7 @@
         });
 
         // Initial load
+        checkBanner();
         loadNext();
     </script>
 </body>

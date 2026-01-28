@@ -4,7 +4,7 @@ import shutil
 from ollama import generate, Client
 
 # Constants
-DATA_DIR = os.path.abspath("captchas")
+DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "captchas"))
 MODEL_NAME = "qwen3-vl:4b"
 TEST_COUNT = 10
 LABEL_LENGTH = 6

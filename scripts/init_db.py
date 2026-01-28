@@ -2,8 +2,8 @@ import os
 import sqlite3
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(BASE_DIR, "captchas")
-DB_PATH = os.path.join(BASE_DIR, "labels.db")
+DATA_DIR = os.path.join(os.path.dirname(BASE_DIR), "data", "captchas")
+DB_PATH = os.path.join(os.path.dirname(BASE_DIR), "server", "labels.db")
 
 def init_db():
     conn = sqlite3.connect(DB_PATH)

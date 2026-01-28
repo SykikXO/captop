@@ -5,7 +5,7 @@ import sqlite3
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(BASE_DIR, "captchas")
+DATA_DIR = os.path.join(os.path.dirname(BASE_DIR), "data", "captchas")
 DB_PATH = os.path.join(BASE_DIR, "labels.db")
 VOTES_REQUIRED = 5
 
@@ -242,6 +242,5 @@ def admin_stats():
 if __name__ == '__main__':
     # Ensure DB is initialized
     if not os.path.exists(DB_PATH):
-        import init_db
-        init_db.init_db()
+        init_db()
     app.run(debug=True, port=5000)
