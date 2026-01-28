@@ -4,16 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAPTCHA Labeler</title>
+    <title>Captop - by Sykik</title>
+    <title>Sykik Captop - Index the Dataset</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
     <div id="contrib-banner" class="banner">
         <span>DO 10 CONTRIBUTIONS TO ADD YOUR NAME TO THE CONTRIBUTORS LIST</span>
-        <button class="close-btn" onclick="closeBanner()">
-            <span class="material-symbols-outlined" style="font-size: 18px;">close</span>
-        </button>
     </div>
 
     <div id="reward-toast" class="toast-reward">
@@ -33,12 +31,12 @@
     </div>
 
     <div class="container">
-        <h1>CAPTCHA Labeler</h1>
-        <p class="subtitle">Help label the dataset for training. 3 labels needed per image.</p>
+        <h1>Captop</h1>
+        <p class="subtitle">by Sykik / help index the dataset</p>
 
         <div class="progress-container">
             <div class="progress-info">
-                <span>INDEXING PROGRESS</span>
+                <span>INDEXING PROGRESS (<span id="progress-percent">0</span>%)</span>
                 <span id="progress-text">0/0</span>
             </div>
             <div class="progress-bar-bg">
@@ -101,6 +99,7 @@
 
         function updateProgressBar(completed, total, percent) {
             document.getElementById('progress-text').textContent = `${completed} / ${total}`;
+            document.getElementById('progress-percent').textContent = percent.toFixed(6);
             document.getElementById('progress-fill').style.width = `${percent}%`;
         }
 
