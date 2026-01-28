@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPTCHA Labeler</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div id="contrib-banner" class="banner">
+        <span>DO 10 CONTRIBUTIONS TO ADD YOUR NAME TO THE CONTRIBUTORS LIST</span>
+        <button class="close-btn" onclick="closeBanner()">
+            <span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+        </button>
+    </div>
+
+    <div id="reward-toast" class="toast-reward">
+        SUCCESSFULLY COMMITTED TO INDEX 👏🎉
+    </div>
+
+    <div id="achievement-modal" class="modal-overlay">
+        <div class="modal">
+            <span class="material-symbols-outlined"
+                style="font-size: 48px; margin-bottom: 16px; color: gold;">workspace_premium</span>
+            <h2>LEVEL UP!</h2>
+            <p>You've done 10+ contributions. Add your name to our list of heroes.</p>
+            <input type="text" id="contributor-name" placeholder="YOUR NAME" maxlength="30">
+            <input type="url" id="contributor-url" placeholder="PROFILE URL (OPTIONAL)">
+            <button class="submit-btn" onclick="submitContributor()">SAVE & CONTINUE</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>CAPTCHA Labeler</h1>
+        <p class="subtitle">Help label the dataset for training. 3 labels needed per image.</p>
+
+        <div class="progress-container">
+            <div class="progress-info">
+                <span>INDEXING PROGRESS</span>
+                <span id="progress-text">0/0</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div id="progress-fill" class="progress-bar-fill"></div>
+            </div>
+        </div>
+
+        <div class="captcha-card" id="main-flow">
+            <div class="captcha-image-wrapper">
+                <img id="captcha-img" src="" alt="LOADING...">
+            </div>
+            <div class="input-group">
+                <input type="text" id="label-input" placeholder="LABEL" maxlength="10" autocomplete="off" autofocus>
+            </div>
+            <button id="submit-btn" class="submit-btn">
+                <span>SUBMIT</span>
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+            <p class="hotkey-hint">press <kbd>enter</kbd> to commit</p>
+        </div>
+
+        <div id="finished-view" style="display: none; text-align: center;">
+            <p style="font-size: 1.25rem; color: var(--accent); font-weight: 700;">All done! Thank you for your help.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        let currentImageId = null;
+        let localContribCount = parseInt(localStorage.getItem('contribCount') || '0');
+        let hasReachedMilestone = localStorage.getItem('reachedMilestone') === 'true';
+
+        function closeBanner() {
+            document.getElementById('contrib-banner').style.display = 'none';
+        }
+
+        async function loadNext() {
+            try {
+                const response = await fetch('/api/next_captcha');
+                if (response.status === 404) {
+                    document.getElementById('main-flow').style.display = 'none';
+                    document.getElementById('finished-view').style.display = 'block';
+                    return;
+                }
+                const data = await response.json();
+
+                currentImageId = data.id;
+                document.getElementById('captcha-img').src = `/captchas/${data.filename}`;
+                document.getElementById('label-input').value = '';
+                document.getElementById('submit-btn').disabled = true;
+                document.getElementById('label-input').focus();
+
+                // Update progress stats from server
+                const progress = data.progress;
+                updateProgressBar(progress.completed, progress.total, progress.percent);
+            } catch (err) {
+                console.error('Failed to load captcha:', err);
+            }
+        }
+
+        function updateProgressBar(completed, total, percent) {
+            document.getElementById('progress-text').textContent = `${completed} / ${total}`;
+            document.getElementById('progress-fill').style.width = `${percent}%`;
+        }
+
+        function showRewardToast() {
+            const toast = document.getElementById('reward-toast');
+            toast.classList.add('visible');
+            setTimeout(() => {
+                toast.classList.remove('visible');
+            }, 1000);
+        }
+
+        function validateInput() {
+            const label = document.getElementById('label-input').value.trim();
+            const btn = document.getElementById('submit-btn');
+            btn.disabled = (label.length !== 6);
+        }
+
+        async function submit() {
+            const label = document.getElementById('label-input').value.trim();
+            if (label.length !== 6 || !currentImageId) return;
+
+            const btn = document.getElementById('submit-btn');
+            btn.disabled = true;
+
+            try {
+                const response = await fetch('/api/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        image_id: currentImageId,
+                        label: label
+                    })
+                });
+
+                if (response.ok) {
+                    // Success! 
+                    showRewardToast();
+                    localContribCount++;
+                    localStorage.setItem('contribCount', localContribCount);
+
+                    if (localContribCount >= 10 && !hasReachedMilestone) {
+                        showAchievement();
+                    }
+                }
+
+                await loadNext();
+            } catch (err) {
+                console.error('Failed to submit:', err);
+                btn.disabled = false;
+            }
+        }
+
+        function showAchievement() {
+            document.getElementById('achievement-modal').style.display = 'flex';
+        }
+
+        async function submitContributor() {
+            const name = document.getElementById('contributor-name').value.trim();
+            const url = document.getElementById('contributor-url').value.trim();
+
+            if (!name) return alert('Name is required');
+
+            try {
+                await fetch('/api/add_contributor', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, url })
+                });
+
+                document.getElementById('achievement-modal').style.display = 'none';
+                localStorage.setItem('reachedMilestone', 'true');
+                hasReachedMilestone = true;
+                closeBanner();
+            } catch (err) {
+                console.error('Failed to save contributor:', err);
+            }
+        }
+
+        document.getElementById('submit-btn').addEventListener('click', submit);
+        document.getElementById('label-input').addEventListener('input', validateInput);
+        document.getElementById('label-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') submit();
+        });
+
+        // Initial load
+        loadNext();
+    </script>
+</body>
+
+</html>
