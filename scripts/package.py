@@ -2,7 +2,7 @@ import zipfile
 import os
 
 def package_project():
-    zip_filename = "qrtop_deploy.zip"
+    zip_filename = "captop_deploy.zip"
     include_files = [
         "server/app.py", 
         "scripts/init_db.py", 
@@ -21,7 +21,7 @@ def package_project():
                         zip_ref.write(os.path.join(root, file))
     
     print(f"Successfully created {zip_filename}")
-    print("Upload this file to PythonAnywhere and run 'unzip qrtop_deploy.zip' in your console.")
+    print("Upload this file to PythonAnywhere and run 'unzip captop_deploy.zip' in your console.")
 
 if __name__ == "__main__":
     package_project()
