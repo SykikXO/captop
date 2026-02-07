@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700">
+  <defs>
+    <style>
+      .state { fill: #1a1a2e; stroke: #333; stroke-width: 0.5; }
+      .label { font-family: Arial, sans-serif; font-size: 8px; fill: #888; }
+      .city-marker { stroke: #fff; stroke-width: 1; }
+      .legend-text { font-family: Arial, sans-serif; font-size: 10px; fill: #ccc; }
+      .title { font-family: Arial, sans-serif; font-size: 16px; fill: #00d4ff; font-weight: bold; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="600" height="700" fill="#0f0f1a"/>
+  
+  <!-- Title -->
+  <text x="300" y="30" text-anchor="middle" class="title">Captop Traffic Distribution - India</text>
+  
+  <!-- Simplified India outline -->
+  <path class="state" d="M200,100 L280,80 L350,90 L400,120 L450,150 L480,200 L500,280 L490,350 L470,420 L440,480 L400,520 L350,560 L300,600 L250,620 L200,600 L160,550 L140,480 L130,400 L140,320 L160,250 L180,180 Z"/>
+  
+  <!-- City Markers with size based on requests -->
+  
+  <!-- Sehore, MP - 5857 requests (largest) -->
+  <circle cx="280" cy="340" r="25" fill="#ff4757" class="city-marker" opacity="0.8"/>
+  <text x="280" y="375" text-anchor="middle" class="label" fill="#ff4757">Sehore</text>
+  
+  <!-- Bhopal, MP - 4018 requests -->
+  <circle cx="300" cy="330" r="20" fill="#ff6b81" class="city-marker" opacity="0.8"/>
+  <text x="300" y="310" text-anchor="middle" class="label" fill="#ff6b81">Bhopal</text>
+  
+  <!-- Indore, MP - 1282 requests -->
+  <circle cx="250" cy="360" r="14" fill="#ffa502" class="city-marker" opacity="0.8"/>
+  <text x="250" y="385" text-anchor="middle" class="label" fill="#ffa502">Indore</text>
+  
+  <!-- Mumbai, MH - 350 requests -->
+  <circle cx="220" cy="440" r="8" fill="#2ed573" class="city-marker" opacity="0.8"/>
+  <text x="220" y="460" text-anchor="middle" class="label" fill="#2ed573">Mumbai</text>
+  
+  <!-- Raipur, CG - 204 requests -->
+  <circle cx="350" cy="370" r="6" fill="#1e90ff" class="city-marker" opacity="0.8"/>
+  <text x="350" y="390" text-anchor="middle" class="label" fill="#1e90ff">Raipur</text>
+  
+  <!-- Patna, BR - 75 requests -->
+  <circle cx="380" cy="270" r="4" fill="#a55eea" class="city-marker" opacity="0.8"/>
+  <text x="380" y="290" text-anchor="middle" class="label" fill="#a55eea">Patna</text>
+  
+  <!-- Hyderabad, TG - 50 requests -->
+  <circle cx="310" cy="460" r="4" fill="#00d4ff" class="city-marker" opacity="0.8"/>
+  <text x="310" y="480" text-anchor="middle" class="label" fill="#00d4ff">Hyderabad</text>
+  
+  <!-- Bengaluru, KA - 23 requests -->
+  <circle cx="280" cy="530" r="3" fill="#7bed9f" class="city-marker" opacity="0.8"/>
+  <text x="280" y="550" text-anchor="middle" class="label" fill="#7bed9f">Bengaluru</text>
+  
+  <!-- Legend -->
+  <rect x="450" y="80" width="140" height="180" fill="rgba(0,0,0,0.5)" rx="5"/>
+  <text x="520" y="100" text-anchor="middle" class="legend-text" fill="#fff" font-weight="bold">Request Volume</text>
+  
+  <circle cx="470" cy="125" r="12" fill="#ff4757" opacity="0.8"/>
+  <text x="490" y="130" class="legend-text">5000+ requests</text>
+  
+  <circle cx="470" cy="155" r="10" fill="#ff6b81" opacity="0.8"/>
+  <text x="490" y="160" class="legend-text">3000-5000</text>
+  
+  <circle cx="470" cy="185" r="8" fill="#ffa502" opacity="0.8"/>
+  <text x="490" y="190" class="legend-text">1000-3000</text>
+  
+  <circle cx="470" cy="210" r="5" fill="#2ed573" opacity="0.8"/>
+  <text x="490" y="215" class="legend-text">100-1000</text>
+  
+  <circle cx="470" cy="235" r="3" fill="#00d4ff" opacity="0.8"/>
+  <text x="490" y="240" class="legend-text">&lt;100 requests</text>
+  
+  <!-- Stats Box -->
+  <rect x="20" y="600" width="200" height="80" fill="rgba(0,0,0,0.5)" rx="5"/>
+  <text x="30" y="620" class="legend-text" fill="#00d4ff">Total India Requests: 12,186</text>
+  <text x="30" y="640" class="legend-text">Unique IPs: 261</text>
+  <text x="30" y="660" class="legend-text">Primary Region: Madhya Pradesh</text>
+  
+</svg>
