@@ -2,15 +2,15 @@
 
 A crowd-sourced captcha labeling system for building ML training datasets.
 
-## Project Status: ✅ Complete (Feb 5, 2026)
+## Project Status: 🏛️ Crowdsourcing Complete (Feb 5, 2026)
 
-**811/811 images labeled** with 3,353 submissions from 45 unique contributors.
+**The crowdsourcing phase to label the captcha dataset is complete!** ML models trained on this data will be uploaded soon.
 
 📊 **[View Full Analytics Report](server/log_analysis.md)** — Traffic patterns, geographic distribution, and system metrics.
 
 ## Project Structure
 
-- **data/**: Labeled captcha dataset (811 images)
+- **data/**: Labeled captcha datasets (Available as 200, 500, and 811 image zips)
 - **server/**: Flask backend, database, and analytics
 - **scripts/**: Utility scripts for database, renaming, and geolocation
 - **worker/**: Cloudflare Worker proxy configuration
@@ -25,7 +25,12 @@ python3 server/app.py
 
 ## Dataset
 
-The labeled dataset is in `data/captchas/` with filenames matching their labels (e.g., `A3K7BX.jpg`).
+The individual images have been organized into zip files for convenience:
+- `data/captchas/dataset_200.zip`: 200 random labeled images.
+- `data/captchas/dataset_500.zip`: 500 random labeled images.
+- `data/captchas/dataset_811.zip`: The full dataset of 811 labeled images.
+
+Filenames within the zips match their labels (e.g., `A3K7BX.jpg`).
 
 ## Analytics
 
