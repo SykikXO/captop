@@ -3,5 +3,9 @@
 __pycache__/
 *.db
 *.pth
-*.zip
 .DS_Store
+
+# Labeled images are for local use only, zips are used for distribution
+data/captchas/*.jpg
+data/test/
+data/training/

@@ -29,8 +29,9 @@ The individual images have been organized into zip files for convenience:
 - `data/captchas/dataset_200.zip`: 200 random labeled images.
 - `data/captchas/dataset_500.zip`: 500 random labeled images.
 - `data/captchas/dataset_811.zip`: The full dataset of 811 labeled images.
+- `data/dataset_test.zip`: The dataset specifically for testing.
 
-Filenames within the zips match their labels (e.g., `A3K7BX.jpg`).
+Individual labeled images are maintained locally for extraction and testing but are not tracked in the repository to keep it clean.
 
 ## Analytics
 
