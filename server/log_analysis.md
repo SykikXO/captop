@@ -95,7 +95,7 @@ xychart-beta
 
 ## Geographic Distribution (India)
 
-![India Traffic Heatmap](file:///home/sykik/Dev/qrtop/server/india_map.svg)
+![India Traffic Heatmap](india_map.svg)
 
 ### Traffic by Region
 
