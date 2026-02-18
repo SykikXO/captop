@@ -19,7 +19,7 @@ Now that the mission is complete, I've made the entire stack—from the scraping
 - **data/**: Labeled captcha datasets (Available as 200, 500, and 811 image zips).
 - **models/**: The final trained weights (`.pth`), performance charts, and quantization scripts.
 - **scripts/**: The core logic for training, decoding, and data utility.
-- **server/**: The Flask-based crowdsourcing platform and analytics dashboard.
+- **crowdsource/**: The Flask-based crowdsourcing platform and analytics dashboard.
 - **worker/**: Cloudflare Worker proxy configuration.
 
 ## Dataset
@@ -37,5 +37,5 @@ The model achieves a **Validation Loss: 0.0013**.
 ## Analytics
 
 Detailed insights from the crowdsourcing phase:
-- **[View Analytics Report](server/log_analysis.md)** — Contributor stats, traffic maps, and system performance.
-- `server/india_map.svg` — Geographic distribution of our contributors.
+- **[View Analytics Report](crowdsource/log_analysis.md)** — Contributor stats, traffic maps, and system performance.
+- `crowdsource/india_map.svg` — Geographic distribution of our contributors.
