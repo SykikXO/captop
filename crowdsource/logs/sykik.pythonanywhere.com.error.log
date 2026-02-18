@@ -1,0 +1,226 @@
+2026-01-28 02:01:04,180: Error running WSGI application
+2026-01-28 02:01:04,194: ModuleNotFoundError: No module named 'flask_cors'
+2026-01-28 02:01:04,195:   File "/var/www/sykik_pythonanywhere_com_wsgi.py", line 8, in <module>
+2026-01-28 02:01:04,195:     from app import app as application
+2026-01-28 02:01:04,195: 
+2026-01-28 02:01:04,195:   File "/home/sykik/captop/./app.py", line 4, in <module>
+2026-01-28 02:01:04,196:     from flask_cors import CORS
+2026-01-28 02:01:04,196: ***************************************************
+2026-01-28 02:01:04,196: If you're seeing an import error and don't know why,
+2026-01-28 02:01:04,196: we have a dedicated help page to help you debug: 
+2026-01-28 02:01:04,196: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2026-01-28 02:01:04,197: ***************************************************
+2026-01-28 02:01:19,214: Error running WSGI application
+2026-01-28 02:01:19,218: ModuleNotFoundError: No module named 'flask_cors'
+2026-01-28 02:01:19,218:   File "/var/www/sykik_pythonanywhere_com_wsgi.py", line 8, in <module>
+2026-01-28 02:01:19,218:     from app import app as application
+2026-01-28 02:01:19,218: 
+2026-01-28 02:01:19,218:   File "/home/sykik/captop/./app.py", line 4, in <module>
+2026-01-28 02:01:19,219:     from flask_cors import CORS
+2026-01-28 02:01:19,223: ***************************************************
+2026-01-28 02:01:19,223: If you're seeing an import error and don't know why,
+2026-01-28 02:01:19,223: we have a dedicated help page to help you debug: 
+2026-01-28 02:01:19,224: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2026-01-28 02:01:19,225: ***************************************************
+2026-01-28 02:01:21,517: Error running WSGI application
+2026-01-28 02:01:21,517: ModuleNotFoundError: No module named 'flask_cors'
+2026-01-28 02:01:21,518:   File "/var/www/sykik_pythonanywhere_com_wsgi.py", line 8, in <module>
+2026-01-28 02:01:21,518:     from app import app as application
+2026-01-28 02:01:21,518: 
+2026-01-28 02:01:21,518:   File "/home/sykik/captop/./app.py", line 4, in <module>
+2026-01-28 02:01:21,518:     from flask_cors import CORS
+2026-01-28 02:01:21,518: ***************************************************
+2026-01-28 02:01:21,519: If you're seeing an import error and don't know why,
+2026-01-28 02:01:21,519: we have a dedicated help page to help you debug: 
+2026-01-28 02:01:21,519: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2026-01-28 02:01:21,519: ***************************************************
+2026-01-28 02:01:24,796: Error running WSGI application
+2026-01-28 02:01:24,797: ModuleNotFoundError: No module named 'flask_cors'
+2026-01-28 02:01:24,798:   File "/var/www/sykik_pythonanywhere_com_wsgi.py", line 8, in <module>
+2026-01-28 02:01:24,798:     from app import app as application
+2026-01-28 02:01:24,798: 
+2026-01-28 02:01:24,799:   File "/home/sykik/captop/./app.py", line 4, in <module>
+2026-01-28 02:01:24,799:     from flask_cors import CORS
+2026-01-28 02:01:24,799: ***************************************************
+2026-01-28 02:01:24,799: If you're seeing an import error and don't know why,
+2026-01-28 02:01:24,800: we have a dedicated help page to help you debug: 
+2026-01-28 02:01:24,800: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2026-01-28 02:01:24,801: ***************************************************
+2026-01-28 02:03:00,323: Error running WSGI application
+2026-01-28 02:03:00,326: ModuleNotFoundError: No module named 'flask_cors'
+2026-01-28 02:03:00,326:   File "/var/www/sykik_pythonanywhere_com_wsgi.py", line 8, in <module>
+2026-01-28 02:03:00,327:     from app import app as application
+2026-01-28 02:03:00,327: 
+2026-01-28 02:03:00,327:   File "/home/sykik/captop/./app.py", line 4, in <module>
+2026-01-28 02:03:00,327:     from flask_cors import CORS
+2026-01-28 02:03:00,328: ***************************************************
+2026-01-28 02:03:00,328: If you're seeing an import error and don't know why,
+2026-01-28 02:03:00,328: we have a dedicated help page to help you debug: 
+2026-01-28 02:03:00,328: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2026-01-28 02:03:00,329: ***************************************************
+2026-01-28 02:06:56,343: Exception on /api/next_captcha [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/sykik/captop/./app.py", line 36, in next_captcha
+    image = conn.execute(query, (VOTES_REQUIRED,)).fetchone()
+sqlite3.OperationalError: no such table: images
+2026-01-28 02:07:20,288: Exception on /api/next_captcha [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/sykik/captop/./app.py", line 36, in next_captcha
+    image = conn.execute(query, (VOTES_REQUIRED,)).fetchone()
+sqlite3.OperationalError: no such table: images
+2026-01-28 02:07:43,625: Exception on /api/next_captcha [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/sykik/captop/./app.py", line 36, in next_captcha
+    image = conn.execute(query, (VOTES_REQUIRED,)).fetchone()
+sqlite3.OperationalError: no such table: images
+2026-01-28 02:09:06,869: Exception on /api/next_captcha [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/sykik/captop/./app.py", line 36, in next_captcha
+    image = conn.execute(query, (VOTES_REQUIRED,)).fetchone()
+sqlite3.OperationalError: no such table: images
+2026-01-28 02:09:17,840: Exception on /api/next_captcha [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/sykik/captop/./app.py", line 36, in next_captcha
+    image = conn.execute(query, (VOTES_REQUIRED,)).fetchone()
+sqlite3.OperationalError: no such table: images
+2026-01-28 02:09:35,237: Exception on /api/next_captcha [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/sykik/captop/./app.py", line 36, in next_captcha
+    image = conn.execute(query, (VOTES_REQUIRED,)).fetchone()
+sqlite3.OperationalError: no such table: images
+2026-01-28 02:09:49,095: Exception on /api/next_captcha [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/sykik/captop/./app.py", line 36, in next_captcha
+    image = conn.execute(query, (VOTES_REQUIRED,)).fetchone()
+sqlite3.OperationalError: no such table: images
+2026-01-30 05:43:27,462: Error running WSGI application
+2026-01-30 05:43:27,465:   File "/home/sykik/captop/./app.py", line 8
+2026-01-30 05:43:27,465: 
+2026-01-30 05:43:27,465:     DATA_DIR = os.path.join(BASE_DIR), "captchas")
+2026-01-30 05:43:27,465: 
+2026-01-30 05:43:27,466:                                                  ^
+2026-01-30 05:43:27,466: 
+2026-01-30 05:43:27,466: SyntaxError: unmatched ')'
+2026-01-30 05:43:27,466:   File "/var/www/sykik_pythonanywhere_com_wsgi.py", line 8, in <module>
+2026-01-30 05:43:27,466:     from app import app as application
+2026-01-30 05:43:27,467: ***************************************************
+2026-01-30 05:43:27,467: If you're seeing an import error and don't know why,
+2026-01-30 05:43:27,467: we have a dedicated help page to help you debug: 
+2026-01-30 05:43:27,467: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2026-01-30 05:43:27,467: ***************************************************
+2026-01-30 05:43:29,030: Error running WSGI application
+2026-01-30 05:43:29,030:   File "/home/sykik/captop/./app.py", line 8
+2026-01-30 05:43:29,030: 
+2026-01-30 05:43:29,031:     DATA_DIR = os.path.join(BASE_DIR), "captchas")
+2026-01-30 05:43:29,031: 
+2026-01-30 05:43:29,031:                                                  ^
+2026-01-30 05:43:29,031: 
+2026-01-30 05:43:29,031: SyntaxError: unmatched ')'
+2026-01-30 05:43:29,039:   File "/var/www/sykik_pythonanywhere_com_wsgi.py", line 8, in <module>
+2026-01-30 05:43:29,039:     from app import app as application
+2026-01-30 05:43:29,039: ***************************************************
+2026-01-30 05:43:29,039: If you're seeing an import error and don't know why,
+2026-01-30 05:43:29,039: we have a dedicated help page to help you debug: 
+2026-01-30 05:43:29,042: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2026-01-30 05:43:29,043: ***************************************************
+2026-01-30 05:43:31,390: Error running WSGI application
+2026-01-30 05:43:31,390:   File "/home/sykik/captop/./app.py", line 8
+2026-01-30 05:43:31,391: 
+2026-01-30 05:43:31,391:     DATA_DIR = os.path.join(BASE_DIR), "captchas")
+2026-01-30 05:43:31,391: 
+2026-01-30 05:43:31,391:                                                  ^
+2026-01-30 05:43:31,391: 
+2026-01-30 05:43:31,392: SyntaxError: unmatched ')'
+2026-01-30 05:43:31,392:   File "/var/www/sykik_pythonanywhere_com_wsgi.py", line 8, in <module>
+2026-01-30 05:43:31,392:     from app import app as application
+2026-01-30 05:43:31,392: ***************************************************
+2026-01-30 05:43:31,397: If you're seeing an import error and don't know why,
+2026-01-30 05:43:31,398: we have a dedicated help page to help you debug: 
+2026-01-30 05:43:31,398: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2026-01-30 05:43:31,398: ***************************************************
+2026-01-30 05:43:32,829: Error running WSGI application
+2026-01-30 05:43:32,829:   File "/home/sykik/captop/./app.py", line 8
+2026-01-30 05:43:32,830: 
+2026-01-30 05:43:32,830:     DATA_DIR = os.path.join(BASE_DIR), "captchas")
+2026-01-30 05:43:32,830: 
+2026-01-30 05:43:32,831:                                                  ^
+2026-01-30 05:43:32,831: 
+2026-01-30 05:43:32,831: SyntaxError: unmatched ')'
+2026-01-30 05:43:32,831:   File "/var/www/sykik_pythonanywhere_com_wsgi.py", line 8, in <module>
+2026-01-30 05:43:32,831:     from app import app as application
+2026-01-30 05:43:32,831: ***************************************************
+2026-01-30 05:43:32,832: If you're seeing an import error and don't know why,
+2026-01-30 05:43:32,832: we have a dedicated help page to help you debug: 
+2026-01-30 05:43:32,832: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2026-01-30 05:43:32,832: ***************************************************
+2026-01-30 05:43:34,141: Error running WSGI application
+2026-01-30 05:43:34,141:   File "/home/sykik/captop/./app.py", line 8
+2026-01-30 05:43:34,142: 
+2026-01-30 05:43:34,142:     DATA_DIR = os.path.join(BASE_DIR), "captchas")
+2026-01-30 05:43:34,142: 
+2026-01-30 05:43:34,142:                                                  ^
+2026-01-30 05:43:34,143: 
+2026-01-30 05:43:34,143: SyntaxError: unmatched ')'
+2026-01-30 05:43:34,143:   File "/var/www/sykik_pythonanywhere_com_wsgi.py", line 8, in <module>
+2026-01-30 05:43:34,143:     from app import app as application
+2026-01-30 05:43:34,144: ***************************************************
+2026-01-30 05:43:34,144: If you're seeing an import error and don't know why,
+2026-01-30 05:43:34,144: we have a dedicated help page to help you debug: 
+2026-01-30 05:43:34,144: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2026-01-30 05:43:34,144: ***************************************************

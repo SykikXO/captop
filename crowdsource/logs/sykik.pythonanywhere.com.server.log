@@ -1,0 +1,38 @@
+2026-02-02 11:42:29 *** Starting uWSGI 2.0.28 (64bit) on [Mon Feb  2 11:42:28 2026] ***
+2026-02-02 11:42:29 compiled with version: 11.4.0 on 16 January 2025 20:41:13
+2026-02-02 11:42:29 os: Linux-6.8.0-1043-aws #45~22.04.1-Ubuntu SMP Wed Nov 12 16:16:28 UTC 2025
+2026-02-02 11:42:29 nodename: green-liveweb10
+2026-02-02 11:42:29 machine: x86_64
+2026-02-02 11:42:29 clock source: unix
+2026-02-02 11:42:29 pcre jit disabled
+2026-02-02 11:42:29 detected number of CPU cores: 4
+2026-02-02 11:42:29 current working directory: /home/sykik
+2026-02-02 11:42:29 detected binary path: /usr/local/bin/uwsgi
+2026-02-02 11:42:29 *** dumping internal routing table ***
+2026-02-02 11:42:29 [rule: 0] subject: path_info regexp: \.svgz$ action: addheader:Content-Encoding:gzip
+2026-02-02 11:42:29 *** end of the internal routing table ***
+2026-02-02 11:42:29 chdir() to /home/sykik/captop
+2026-02-02 11:42:29 your processes number limit is 256
+2026-02-02 11:42:29 your memory page size is 4096 bytes
+2026-02-02 11:42:29 detected max file descriptor number: 123456
+2026-02-02 11:42:29 building mime-types dictionary from file /etc/mime.types...
+2026-02-02 11:42:29 1516 entry found
+2026-02-02 11:42:29 lock engine: pthread robust mutexes
+2026-02-02 11:42:29 thunder lock: disabled (you can enable it with --thunder-lock)
+2026-02-02 11:42:29 uwsgi socket 0 bound to UNIX address /var/sockets/sykik.pythonanywhere.com/socket fd 3
+2026-02-02 11:42:29 Python version: 3.10.12 (main, Nov  6 2024, 20:22:13) [GCC 11.4.0]
+2026-02-02 11:42:29 Python main interpreter initialized at 0x55a5b91d48b0
+2026-02-02 11:42:29 python threads support enabled
+2026-02-02 11:42:29 your server socket listen backlog is limited to 100 connections
+2026-02-02 11:42:29 your mercy for graceful operations on workers is 60 seconds
+2026-02-02 11:42:29 setting request body buffering size to 65536 bytes
+2026-02-02 11:42:29 mapped 334256 bytes (326 KB) for 1 cores
+2026-02-02 11:42:29 *** Operational MODE: single process ***
+2026-02-02 11:42:29 initialized 38 metrics
+2026-02-02 11:42:29 WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55a5b91d48b0 pid: 1 (default app)
+2026-02-02 11:42:29 *** uWSGI is running in multiple interpreter mode ***
+2026-02-02 11:42:29 gracefully (RE)spawned uWSGI master process (pid: 1)
+2026-02-02 11:42:29 spawned uWSGI worker 1 (pid: 2, cores: 1)
+2026-02-02 11:42:29 metrics collector thread started
+2026-02-02 11:42:29 spawned 2 offload threads for uWSGI worker 1
+2026-02-02 11:42:30 announcing my loyalty to the Emperor...

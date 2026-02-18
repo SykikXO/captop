@@ -4,7 +4,7 @@ __pycache__/
 *.pyc
 
 # Rust
-server/target/
+api/target/
 
 # Build artifacts
 captop-chrome/
