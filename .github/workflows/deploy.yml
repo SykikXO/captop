@@ -54,25 +54,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Package Chrome extension
-        run: |
-          cd extension
-          zip -r ../captop-chrome-${{ github.ref_name }}.zip . \
-            -x "firefox-manifest.json" ".*"
+      - name: Write Chrome signing key
+        run: echo "${{ secrets.CHROME_PEM }}" > captop-chrome.pem
 
-      - name: Package Firefox extension
+      - name: Package extensions
         run: |
-          cd extension
-          mv manifest.json manifest.json.chrome
-          cp firefox-manifest.json manifest.json
-          zip -r ../captop-firefox-${{ github.ref_name }}.zip . \
-            -x "manifest.json.chrome" "firefox-manifest.json" ".*"
-          mv manifest.json.chrome manifest.json
+          chmod +x package_extensions.sh
+          ./package_extensions.sh "${{ github.ref_name }}"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
+            captop-chrome.crx
             captop-chrome-${{ github.ref_name }}.zip
             captop-firefox-${{ github.ref_name }}.zip
           generate_release_notes: true
