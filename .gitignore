@@ -1,11 +1,27 @@
+# Python
 .venv/
-.wrangler/
 __pycache__/
-*.db
-*.pth
+*.pyc
+
+# Rust
+server/target/
+
+# Build artifacts
+captop-chrome/
+captop-chrome.crx
+captop-chrome.pem
+captop-firefox-*.zip
+
+# Environment
+.env
 .DS_Store
 
-# Labeled images are for local use only, zips are used for distribution
+# Wrangler
+.wrangler/
+
+# Data (raw images are local only, zips are distributed)
+*.db
+*.pth
 data/captchas/*.jpg
 data/test/
 data/training/

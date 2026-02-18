@@ -1,0 +1,78 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ "master" ]
+    tags: [ "v*" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./server
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/captop-server:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/captop-server:${{ github.sha }}
+
+      - name: Deploy to Server via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/captop-server:latest
+            docker stop captop-server || true
+            docker rm captop-server || true
+            docker run -d \
+              --name captop-server \
+              -p 3000:3000 \
+              -e PORT=3000 \
+              --restart unless-stopped \
+              ${{ secrets.DOCKERHUB_USERNAME }}/captop-server:latest
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    needs: build-and-deploy
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Package Chrome extension
+        run: |
+          cd extension
+          zip -r ../captop-chrome-${{ github.ref_name }}.zip . \
+            -x "firefox-manifest.json" ".*"
+
+      - name: Package Firefox extension
+        run: |
+          cd extension
+          mv manifest.json manifest.json.chrome
+          cp firefox-manifest.json manifest.json
+          zip -r ../captop-firefox-${{ github.ref_name }}.zip . \
+            -x "manifest.json.chrome" "firefox-manifest.json" ".*"
+          mv manifest.json.chrome manifest.json
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            captop-chrome-${{ github.ref_name }}.zip
+            captop-firefox-${{ github.ref_name }}.zip
+          generate_release_notes: true
