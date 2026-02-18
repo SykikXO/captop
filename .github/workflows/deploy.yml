@@ -67,6 +67,5 @@ jobs:
         with:
           files: |
             captop-chrome.crx
-            captop-chrome-${{ github.ref_name }}.zip
             captop-firefox-${{ github.ref_name }}.zip
           generate_release_notes: true
