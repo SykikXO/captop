@@ -13,17 +13,18 @@ The model is available as a browser extension to auto-solve captchas directly on
 
 | Platform | Browser | Install Method | Status |
 |:---------|:--------|:---------------|:-------|
-| 🖥️ **Windows / macOS / Linux** | 🦊 **Firefox** | [Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/) | ✅ One-click install |
-| 🖥️ **Windows / macOS / Linux** | 🌐 **Chrome / Edge / Brave** | 📦 `.zip` → Load unpacked | ✅ Works |
-| 🖥️ **Windows / macOS / Linux** | 🔴 **Opera / Vivaldi** | 📦 `.zip` → Load unpacked | ✅ Works |
-| 📱 **Android** | 🦊 **Firefox** | [Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/) | ✅ One-click install |
-| 📱 **Android** | 🌐 **Yandex Browser** | 📦 `.crx` direct install | ✅ Works |
-| 📱 **Android** | 🍋 **Lemur Browser** | 📦 `.crx` direct install | ✅ Works |
-| 📱 **Android** | 🌊 **Edge Canary** | 📦 `.crx` manual install | ✅ Works |
+| ![Windows](https://img.shields.io/badge/Windows-0078D4?style=flat-square&logo=windows&logoColor=white) ![macOS](https://img.shields.io/badge/macOS-000000?style=flat-square&logo=apple&logoColor=white) ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black) | ![Firefox](https://img.shields.io/badge/Firefox-FF7139?style=flat-square&logo=firefoxbrowser&logoColor=white) | [Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/) | ✅ ⭐ Recommended |
+| ![Windows](https://img.shields.io/badge/Windows-0078D4?style=flat-square&logo=windows&logoColor=white) ![macOS](https://img.shields.io/badge/macOS-000000?style=flat-square&logo=apple&logoColor=white) ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black) | ![Chrome](https://img.shields.io/badge/Chrome-4285F4?style=flat-square&logo=googlechrome&logoColor=white) ![Edge](https://img.shields.io/badge/Edge-0078D7?style=flat-square&logo=microsoftedge&logoColor=white) ![Brave](https://img.shields.io/badge/Brave-FB542B?style=flat-square&logo=brave&logoColor=white) | `.zip` → Load unpacked | ✅ Works |
+| ![Windows](https://img.shields.io/badge/Windows-0078D4?style=flat-square&logo=windows&logoColor=white) ![macOS](https://img.shields.io/badge/macOS-000000?style=flat-square&logo=apple&logoColor=white) ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black) | ![Opera](https://img.shields.io/badge/Opera-FF1B2D?style=flat-square&logo=opera&logoColor=white) ![Vivaldi](https://img.shields.io/badge/Vivaldi-EF3939?style=flat-square&logo=vivaldi&logoColor=white) | `.zip` → Load unpacked | ✅ Works |
+| ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white) | ![Firefox](https://img.shields.io/badge/Firefox-FF7139?style=flat-square&logo=firefoxbrowser&logoColor=white) | [Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/) | ✅ ⭐ Recommended |
+| ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white) | ![Quetta](https://img.shields.io/badge/Quetta-4A90D9?style=flat-square&logoColor=white) | `.crx` / Web Store | ✅ ⭐ Recommended |
+| ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white) | ![Yandex](https://img.shields.io/badge/Yandex-FF0000?style=flat-square&logo=yandexbrowser&logoColor=white) | `.crx` direct install | ✅ Works |
+| ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white) | ![Lemur](https://img.shields.io/badge/Lemur-8BC34A?style=flat-square&logoColor=white) | `.crx` direct install | ✅ Works |
+| ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white) | ![Edge Canary](https://img.shields.io/badge/Edge_Canary-FFC107?style=flat-square&logo=microsoftedge&logoColor=black) | `.crx` manual install | ✅ Works |
 
 ---
 
-### 🦊 Firefox (Desktop & Android)
+### ![Firefox](https://img.shields.io/badge/Firefox-FF7139?style=flat-square&logo=firefoxbrowser&logoColor=white) Firefox (Desktop & Android) — ⭐ Recommended
 
 Install directly from the official Add-ons store — works on both desktop and mobile Firefox:
 
@@ -31,9 +32,9 @@ Install directly from the official Add-ons store — works on both desktop and m
 
 ---
 
-### 💻 Chromium-based Browsers (Desktop)
+### ![Chrome](https://img.shields.io/badge/Chromium-4285F4?style=flat-square&logo=googlechrome&logoColor=white) Chromium-based Browsers (Desktop)
 
-Works on 🌐 **Chrome**, 🌊 **Edge**, 🦁 **Brave**, 🔴 **Vivaldi**, ⭕ **Opera**, and any Chromium-based browser:
+Works on ![Chrome](https://img.shields.io/badge/Chrome-4285F4?style=flat-square&logo=googlechrome&logoColor=white) ![Edge](https://img.shields.io/badge/Edge-0078D7?style=flat-square&logo=microsoftedge&logoColor=white) ![Brave](https://img.shields.io/badge/Brave-FB542B?style=flat-square&logo=brave&logoColor=white) ![Vivaldi](https://img.shields.io/badge/Vivaldi-EF3939?style=flat-square&logo=vivaldi&logoColor=white) ![Opera](https://img.shields.io/badge/Opera-FF1B2D?style=flat-square&logo=opera&logoColor=white) and any Chromium-based browser:
 
 1. Go to the [**Releases**](https://github.com/SykikXO/captop/releases) page and download `captop-chrome-vX.X.X.zip`
 2. **Extract** the `.zip` into a folder
@@ -44,16 +45,21 @@ Works on 🌐 **Chrome**, 🌊 **Edge**, 🦁 **Brave**, 🔴 **Vivaldi**, ⭕ *
 
 ---
 
-### 📱 Android (Chromium-based)
+### ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white) Android (Chromium-based)
 
 Several Android browsers support Chrome extensions via `.crx` files:
 
-**🌐 Yandex Browser / 🍋 Lemur Browser:**
+**![Quetta](https://img.shields.io/badge/Quetta-4A90D9?style=flat-square&logoColor=white) Quetta Browser — ⭐ Recommended:**
+1. Download `captop-chrome.crx` from the [**Releases**](https://github.com/SykikXO/captop/releases) page
+2. Open the `.crx` file or install directly from the Chrome Web Store within Quetta
+3. The extension will be ready to use!
+
+**![Yandex](https://img.shields.io/badge/Yandex-FF0000?style=flat-square&logo=yandexbrowser&logoColor=white) Yandex Browser / ![Lemur](https://img.shields.io/badge/Lemur-8BC34A?style=flat-square&logoColor=white) Lemur Browser:**
 1. Download `captop-chrome.crx` from the [**Releases**](https://github.com/SykikXO/captop/releases) page
 2. Open the downloaded `.crx` file — the browser will prompt you to install it
 3. Confirm the installation and you're good to go!
 
-**🌊 Edge Canary (Android):**
+**![Edge Canary](https://img.shields.io/badge/Edge_Canary-FFC107?style=flat-square&logo=microsoftedge&logoColor=black) Edge Canary (Android):**
 1. Download `captop-chrome.crx` from the [**Releases**](https://github.com/SykikXO/captop/releases) page
 2. Go to `edge://extensions` and enable **Developer mode**
 3. Install the `.crx` file manually
