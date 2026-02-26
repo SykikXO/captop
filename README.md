@@ -18,7 +18,7 @@ The model is available as a browser extension to auto-solve captchas directly on
 | ![Windows](https://img.shields.io/badge/Windows-0078D4?style=flat-square&logo=windows&logoColor=white) ![macOS](https://img.shields.io/badge/macOS-000000?style=flat-square&logo=apple&logoColor=white) ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black) | ![Opera](https://img.shields.io/badge/Opera-FF1B2D?style=flat-square&logo=opera&logoColor=white) ![Vivaldi](https://img.shields.io/badge/Vivaldi-EF3939?style=flat-square&logo=vivaldi&logoColor=white) | `.zip` → Load unpacked | ✅ Works |
 | ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white) | ![Firefox](https://img.shields.io/badge/Firefox-FF7139?style=flat-square&logo=firefoxbrowser&logoColor=white) | [Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/) | ✅ ⭐ Recommended |
 | ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white) | ![Quetta](https://img.shields.io/badge/Quetta-4A90D9?style=flat-square&logoColor=white) | `.crx` / Web Store | ✅ ⭐ Recommended |
-| ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white) | ![Yandex](https://img.shields.io/badge/Yandex-FF0000?style=flat-square&logo=yandexbrowser&logoColor=white) | `.crx` direct install | ✅ Works |
+| ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white) | ![Yandex](https://img.shields.io/badge/Yandex-FF0000?style=flat-square&logo=yandexbrowser&logoColor=white) | `.zip` → Load unpacked | ✅ Works |
 | ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white) | ![Lemur](https://img.shields.io/badge/Lemur-8BC34A?style=flat-square&logoColor=white) | `.crx` direct install | ✅ Works |
 | ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white) | ![Edge Canary](https://img.shields.io/badge/Edge_Canary-FFC107?style=flat-square&logo=microsoftedge&logoColor=black) | `.crx` manual install | ✅ Works |
 
@@ -59,8 +59,9 @@ Several Android browsers support Chrome extensions via `.crx` files:
 **![Yandex](https://img.shields.io/badge/Yandex-FF0000?style=flat-square&logo=yandexbrowser&logoColor=white) Yandex Browser:**
 
 1. Download `captop-chrome.crx` from the [**Releases**](https://github.com/SykikXO/captop/releases) page
-2. Open the downloaded `.crx` file — Yandex will prompt you to install it
-3. Confirm the installation and you're good to go!
+2. Rename `captop-chrome.crx` to `captop-chrome.zip` and **extract** it to a folder
+3. In Yandex, go to `browser://extensions` and enable **Developer mode**
+4. Tap **"Load unpacked"** and select the extracted folder (point to `manifest.json`)
 
 **![Lemur](https://img.shields.io/badge/Lemur-8BC34A?style=flat-square&logoColor=white) Lemur Browser:**
 
