@@ -5,10 +5,26 @@
 
 **Captop** is a complete, open-source pipeline for researchers and ML enthusiasts to understand how to collect, label, and train models on real-world captcha data.
 
-## Try the Extension
+## Installation Guide
 
-The model is now available as a browser extension to auto-solve captchas directly in your browser!
-- 🦊 **[Download for Firefox: VTOP Captcha Bye Bye](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/)**
+The model is available as a browser extension to auto-solve captchas directly on the login page!
+
+### 🦊 Firefox (Desktop & Android)
+Install directly from the official Firefox Add-ons store:
+> **[Download for Firefox: VTOP Captcha Bye Bye](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/)**
+
+### 💻 Chrome, Edge, Brave (Desktop)
+Since this extension isn't on the Chrome Web Store, you can manually install it:
+1. Go to the **Releases** page and download `captop-chrome-v1.3.1.zip`.
+2. Extract the `.zip` file into a folder on your computer.
+3. Open your browser and go to `chrome://extensions` (or `edge://extensions`).
+4. Enable **Developer mode** (usually a toggle in the top-right corner).
+5. Click **"Load unpacked"** and select the extracted folder. Done!
+
+### 📱 Kiwi, Yandex, Lemur (Android Chromium)
+Many Android Chromium forks support direct `.crx` installations!
+1. Go to the **Releases** page and download `captop-chrome.crx`.
+2. Tap the downloaded file or open it via the browser's extension page to install directly.
 
 ## The Story
 
