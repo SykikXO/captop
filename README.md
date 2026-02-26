@@ -1,6 +1,14 @@
-# Captop
+<div align="center">
+  <img src="assets/vtopautocaptcha.png" alt="VTOP AutoCaptcha Project Image" />
+  <h1>captop / VTOP AutoCaptcha</h1>
+</div>
 
 **Captop** is a complete, open-source pipeline for researchers and ML enthusiasts to understand how to collect, label, and train models on real-world captcha data.
+
+## Try the Extension
+
+The model is now available as a browser extension to auto-solve captchas directly in your browser!
+- 🦊 **[Download for Firefox: VTOP Captcha Bye Bye](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/)**
 
 ## The Story
 
@@ -39,3 +47,50 @@ The model achieves a **Validation Loss: 0.0013**.
 Detailed insights from the crowdsourcing phase:
 - **[View Analytics Report](crowdsource/log_analysis.md)** — Contributor stats, traffic maps, and system performance.
 - `crowdsource/india_map.svg` — Geographic distribution of our contributors.
+
+## Contributors
+
+A huge thanks to all the amazing people who helped crowdsource the data labels. This project wouldn't have been possible without you!
+
+- [Aayush Chanda](https://github.com/Aayush-Chanda)
+- [Abhishek](https://github.com/Ab705h)
+- Aman
+- Amritanshu Sahu
+- [anand kr yadav](https://github.com/anand9608)
+- Ansh
+- [Arya](https://github.com/aryag-31)
+- Aryan Agrahari
+- [Blactract](https://github.com/CAPTAIN-BLACTRACT)
+- Brijesh
+- [Davood](https://github.com/TheDavood-10)
+- [ffcs-planner-vitb.vercel.app](https://ffcs-planner-vitb.vercel.app/)
+- Hardik
+- Harshit
+- [Kanishk](https://github.com/kanishk300)
+- [Manov](https://github.com/Manov)
+- Mayank
+- Parth Sararthi
+- Prateek
+- [Pratyush](https://github.com/Pratyush-10)
+- Puss in Boots
+- [Raunak](https://github.com/Raunak-24)
+- [Rishabh Bansal](https://github.com/Rishabh-Bansal)
+- S
+- [Sairam S](https://github.com/Sairam-S)
+- [Sarthak](https://github.com/sarthak-01)
+- Shaurya
+- [Shivam](https://github.com/shivam-01)
+- [Shreyas](https://github.com/shreyas-01)
+- [Shubham](https://github.com/shubham-01)
+- [Siddhant](https://github.com/siddhant-01)
+- [Subal](https://github.com/ajsubal555)
+- Sumit
+- Sunidhi Suman
+- [Suraj](https://github.com/suraj-01)
+- [Tertiary Ion](https://github.com/TertiaryCo)
+- urn.ab
+- VANSHIKA
+- [Vidishaa](https://github.com/vidishaa27)
+- Vijay Naveen Mishra
+- [Virat Nigam](https://github.com/viratnigam18)
+- [Yash Priyam](https://github.com/Raunak-24)
