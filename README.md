@@ -50,19 +50,31 @@ Works on ![Chrome](https://img.shields.io/badge/Chrome-4285F4?style=flat-square&
 Several Android browsers support Chrome extensions via `.crx` files:
 
 **![Quetta](https://img.shields.io/badge/Quetta-4A90D9?style=flat-square&logoColor=white) Quetta Browser — ⭐ Recommended:**
-1. Download `captop-chrome.crx` from the [**Releases**](https://github.com/SykikXO/captop/releases) page
-2. Open the `.crx` file or install directly from the Chrome Web Store within Quetta
-3. The extension will be ready to use!
 
-**![Yandex](https://img.shields.io/badge/Yandex-FF0000?style=flat-square&logo=yandexbrowser&logoColor=white) Yandex Browser / ![Lemur](https://img.shields.io/badge/Lemur-8BC34A?style=flat-square&logoColor=white) Lemur Browser:**
 1. Download `captop-chrome.crx` from the [**Releases**](https://github.com/SykikXO/captop/releases) page
-2. Open the downloaded `.crx` file — the browser will prompt you to install it
+2. Open Quetta, tap the **⋮ menu** → **Extensions** (puzzle icon)
+3. Tap **"Install extension"** → select **"From .crx/.zip/.user.js"**
+4. Choose the downloaded `.crx` file — the extension will be installed!
+
+**![Yandex](https://img.shields.io/badge/Yandex-FF0000?style=flat-square&logo=yandexbrowser&logoColor=white) Yandex Browser:**
+
+1. Download `captop-chrome.crx` from the [**Releases**](https://github.com/SykikXO/captop/releases) page
+2. Open the downloaded `.crx` file — Yandex will prompt you to install it
 3. Confirm the installation and you're good to go!
 
-**![Edge Canary](https://img.shields.io/badge/Edge_Canary-FFC107?style=flat-square&logo=microsoftedge&logoColor=black) Edge Canary (Android):**
+**![Lemur](https://img.shields.io/badge/Lemur-8BC34A?style=flat-square&logoColor=white) Lemur Browser:**
+
 1. Download `captop-chrome.crx` from the [**Releases**](https://github.com/SykikXO/captop/releases) page
-2. Go to `edge://extensions` and enable **Developer mode**
-3. Install the `.crx` file manually
+2. Open Lemur, go to **Extensions** (four-square icon)
+3. Tap **"Import local extension"** and select the downloaded `.crx` file
+
+**![Edge Canary](https://img.shields.io/badge/Edge_Canary-FFC107?style=flat-square&logo=microsoftedge&logoColor=black) Edge Canary (Android):**
+
+1. Download `captop-chrome.crx` from the [**Releases**](https://github.com/SykikXO/captop/releases) page
+2. In Edge Canary, go to `edge://flags` and enable the **"Android Extension"** flag, then restart
+3. Go to **Settings** → **About Microsoft Edge** → tap the **build number 5 times** to unlock **Developer Options**
+4. Go back to **Settings** → **Developer Options** → tap **"Extension install by crx"**
+5. Select the downloaded `.crx` file to install
 
 ## The Story
 
