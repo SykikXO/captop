@@ -35,8 +35,10 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/captop-server:latest
-            # Force remove the container if it exists (running or stopped)
-            docker rm -f captop-server || true
+            # Stop first to cancel restart policy, then remove
+            docker stop captop-server 2>/dev/null || true
+            sleep 3
+            docker rm -f captop-server 2>/dev/null || true
             # Run the new container
             docker run -d \
               --name captop-server \
