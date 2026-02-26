@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/vtopautocaptcha.png" alt="VTOP AutoCaptcha Project Image" />
+  <img src="assets/vtopautocaptcha.png" alt="VTOP AutoCaptcha" width="250" />
   <h1>captop / VTOP AutoCaptcha</h1>
 </div>
 
@@ -7,19 +7,66 @@
 
 ## Installation Guide
 
-The model is available as a browser extension to auto-solve captchas directly on the login page!
+The model is available as a browser extension to auto-solve captchas directly on the VTOP login page!
+
+### Browser & Platform Compatibility
+
+| Platform | Browser | Install Method | Status |
+|:---------|:--------|:---------------|:-------|
+| 🖥️ **Windows / macOS / Linux** | Firefox | [Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/) | ✅ One-click install |
+| 🖥️ **Windows / macOS / Linux** | Chrome | `.zip` → Load unpacked | ✅ Works |
+| 🖥️ **Windows / macOS / Linux** | Edge | `.zip` → Load unpacked | ✅ Works |
+| 🖥️ **Windows / macOS / Linux** | Brave | `.zip` → Load unpacked | ✅ Works |
+| 🖥️ **Windows / macOS / Linux** | Vivaldi | `.zip` → Load unpacked | ✅ Works |
+| 🖥️ **Windows / macOS / Linux** | Opera | `.zip` → Load unpacked | ✅ Works |
+| 📱 **Android** | Firefox | [Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/) | ✅ One-click install |
+| 📱 **Android** | Kiwi Browser | `.crx` direct install | ⚠️ Archived (no updates) |
+| 📱 **Android** | Yandex Browser | `.crx` direct install | ✅ Works |
+| 📱 **Android** | Lemur Browser | `.crx` direct install | ✅ Works |
+| 📱 **Android** | Edge Canary | `.crx` manual install | ✅ Works |
+
+---
 
 ### 🦊 Firefox (Desktop & Android)
-Install directly from the official Firefox Add-ons store:
-> **[Download for Firefox: VTOP Captcha Bye Bye](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/)**
 
-### 💻 Chrome, Edge, Brave, Kiwi, Yandex (Desktop & Android)
-Since this extension isn't on the Chrome Web Store, you can manually install it via Developer Mode on any Chromium browser that supports extensions (including Android's Kiwi Browser and Yandex):
-1. Go to the **Releases** page and download `captop-chrome-v1.3.1.zip`.
-2. Extract the `.zip` file into a folder on your computer (or your phone's storage).
-3. Open your browser and go to `chrome://extensions` (or `edge://extensions` / `browser://extensions`).
-4. Enable **Developer mode** (usually a toggle in the top-right corner).
-5. Click **"Load unpacked"** (or `+ (from .zip/.crx/.user.js)` on Kiwi) and select the extracted folder. Done!
+Install directly from the official Add-ons store — works on both desktop and mobile Firefox:
+
+> **[⬇️ Download: VTOP Captcha Bye Bye](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/)**
+
+---
+
+### 💻 Chromium-based Browsers (Desktop)
+
+Works on **Chrome, Edge, Brave, Vivaldi, Opera**, and any Chromium-based browser:
+
+1. Go to the [**Releases**](https://github.com/SykikXO/captop/releases) page and download `captop-chrome-vX.X.X.zip`
+2. **Extract** the `.zip` into a folder
+3. Open your browser and navigate to `chrome://extensions` (or `edge://extensions`, `brave://extensions`, etc.)
+4. Toggle **Developer mode** ON (top-right corner)
+5. Click **"Load unpacked"** and select the extracted folder
+6. Done! Navigate to VTOP login and the extension will auto-solve captchas
+
+---
+
+### 📱 Android (Chromium-based)
+
+Several Android browsers support Chrome extensions via `.crx` files:
+
+**Yandex Browser / Lemur Browser:**
+1. Download `captop-chrome.crx` from the [**Releases**](https://github.com/SykikXO/captop/releases) page
+2. Open the downloaded `.crx` file — the browser will prompt you to install it
+3. Confirm the installation and you're good to go!
+
+**Kiwi Browser** *(archived — no longer receiving updates):*
+1. Download `captop-chrome.crx` from [**Releases**](https://github.com/SykikXO/captop/releases)
+2. Go to `chrome://extensions` in Kiwi
+3. Enable **Developer mode** and tap **"+(from .crx/.zip/.user.js)"**
+4. Select the downloaded `.crx` file
+
+**Edge Canary (Android):**
+1. Download `captop-chrome.crx` from [**Releases**](https://github.com/SykikXO/captop/releases)
+2. Go to `edge://extensions` and enable **Developer mode**
+3. Install the `.crx` file manually
 
 ## The Story
 

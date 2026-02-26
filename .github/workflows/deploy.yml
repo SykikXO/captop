@@ -57,7 +57,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-# Chrome signing key writing removed
+      - name: Write Chrome signing key
+        run: echo "${{ secrets.CHROME_PEM }}" > captop-chrome.pem
 
       - name: Package extensions
         run: |
@@ -68,6 +69,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: |
+            captop-chrome.crx
             captop-chrome-${{ github.ref_name }}.zip
             captop-firefox-${{ github.ref_name }}.zip
           generate_release_notes: true
