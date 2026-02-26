@@ -13,18 +13,13 @@ The model is available as a browser extension to auto-solve captchas directly on
 Install directly from the official Firefox Add-ons store:
 > **[Download for Firefox: VTOP Captcha Bye Bye](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/)**
 
-### 💻 Chrome, Edge, Brave (Desktop)
-Since this extension isn't on the Chrome Web Store, you can manually install it:
+### 💻 Chrome, Edge, Brave, Kiwi, Yandex (Desktop & Android)
+Since this extension isn't on the Chrome Web Store, you can manually install it via Developer Mode on any Chromium browser that supports extensions (including Android's Kiwi Browser and Yandex):
 1. Go to the **Releases** page and download `captop-chrome-v1.3.1.zip`.
-2. Extract the `.zip` file into a folder on your computer.
-3. Open your browser and go to `chrome://extensions` (or `edge://extensions`).
+2. Extract the `.zip` file into a folder on your computer (or your phone's storage).
+3. Open your browser and go to `chrome://extensions` (or `edge://extensions` / `browser://extensions`).
 4. Enable **Developer mode** (usually a toggle in the top-right corner).
-5. Click **"Load unpacked"** and select the extracted folder. Done!
-
-### 📱 Kiwi, Yandex, Lemur (Android Chromium)
-Many Android Chromium forks support direct `.crx` installations!
-1. Go to the **Releases** page and download `captop-chrome.crx`.
-2. Tap the downloaded file or open it via the browser's extension page to install directly.
+5. Click **"Load unpacked"** (or `+ (from .zip/.crx/.user.js)` on Kiwi) and select the extracted folder. Done!
 
 ## The Story
 
