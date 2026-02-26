@@ -13,17 +13,13 @@ The model is available as a browser extension to auto-solve captchas directly on
 
 | Platform | Browser | Install Method | Status |
 |:---------|:--------|:---------------|:-------|
-| 🖥️ **Windows / macOS / Linux** | Firefox | [Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/) | ✅ One-click install |
-| 🖥️ **Windows / macOS / Linux** | Chrome | `.zip` → Load unpacked | ✅ Works |
-| 🖥️ **Windows / macOS / Linux** | Edge | `.zip` → Load unpacked | ✅ Works |
-| 🖥️ **Windows / macOS / Linux** | Brave | `.zip` → Load unpacked | ✅ Works |
-| 🖥️ **Windows / macOS / Linux** | Vivaldi | `.zip` → Load unpacked | ✅ Works |
-| 🖥️ **Windows / macOS / Linux** | Opera | `.zip` → Load unpacked | ✅ Works |
-| 📱 **Android** | Firefox | [Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/) | ✅ One-click install |
-| 📱 **Android** | Kiwi Browser | `.crx` direct install | ⚠️ Archived (no updates) |
-| 📱 **Android** | Yandex Browser | `.crx` direct install | ✅ Works |
-| 📱 **Android** | Lemur Browser | `.crx` direct install | ✅ Works |
-| 📱 **Android** | Edge Canary | `.crx` manual install | ✅ Works |
+| 🖥️ **Windows / macOS / Linux** | 🦊 **Firefox** | [Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/) | ✅ One-click install |
+| 🖥️ **Windows / macOS / Linux** | 🌐 **Chrome / Edge / Brave** | 📦 `.zip` → Load unpacked | ✅ Works |
+| 🖥️ **Windows / macOS / Linux** | 🔴 **Opera / Vivaldi** | 📦 `.zip` → Load unpacked | ✅ Works |
+| 📱 **Android** | 🦊 **Firefox** | [Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/) | ✅ One-click install |
+| 📱 **Android** | 🌐 **Yandex Browser** | 📦 `.crx` direct install | ✅ Works |
+| 📱 **Android** | 🍋 **Lemur Browser** | 📦 `.crx` direct install | ✅ Works |
+| 📱 **Android** | 🌊 **Edge Canary** | 📦 `.crx` manual install | ✅ Works |
 
 ---
 
@@ -37,7 +33,7 @@ Install directly from the official Add-ons store — works on both desktop and m
 
 ### 💻 Chromium-based Browsers (Desktop)
 
-Works on **Chrome, Edge, Brave, Vivaldi, Opera**, and any Chromium-based browser:
+Works on 🌐 **Chrome**, 🌊 **Edge**, 🦁 **Brave**, 🔴 **Vivaldi**, ⭕ **Opera**, and any Chromium-based browser:
 
 1. Go to the [**Releases**](https://github.com/SykikXO/captop/releases) page and download `captop-chrome-vX.X.X.zip`
 2. **Extract** the `.zip` into a folder
@@ -52,19 +48,13 @@ Works on **Chrome, Edge, Brave, Vivaldi, Opera**, and any Chromium-based browser
 
 Several Android browsers support Chrome extensions via `.crx` files:
 
-**Yandex Browser / Lemur Browser:**
+**🌐 Yandex Browser / 🍋 Lemur Browser:**
 1. Download `captop-chrome.crx` from the [**Releases**](https://github.com/SykikXO/captop/releases) page
 2. Open the downloaded `.crx` file — the browser will prompt you to install it
 3. Confirm the installation and you're good to go!
 
-**Kiwi Browser** *(archived — no longer receiving updates):*
-1. Download `captop-chrome.crx` from [**Releases**](https://github.com/SykikXO/captop/releases)
-2. Go to `chrome://extensions` in Kiwi
-3. Enable **Developer mode** and tap **"+(from .crx/.zip/.user.js)"**
-4. Select the downloaded `.crx` file
-
-**Edge Canary (Android):**
-1. Download `captop-chrome.crx` from [**Releases**](https://github.com/SykikXO/captop/releases)
+**🌊 Edge Canary (Android):**
+1. Download `captop-chrome.crx` from the [**Releases**](https://github.com/SykikXO/captop/releases) page
 2. Go to `edge://extensions` and enable **Developer mode**
 3. Install the `.crx` file manually
 
