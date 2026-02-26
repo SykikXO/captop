@@ -9,7 +9,8 @@ EXT_DIR="$SCRIPT_DIR/extension"
 ROOT_DIR="$SCRIPT_DIR"
 
 # Version from argument or manifest
-VERSION="${1:-$(grep '"version"' "$EXT_DIR/manifest.json" | head -1 | sed 's/.*: *"\(.*\)".*/\1/')}"
+V_ARG="${1#v}"
+VERSION="${V_ARG:-$(grep '"version"' "$EXT_DIR/manifest.json" | head -1 | sed 's/.*: *"\(.*\)".*/\1/')}"
 PEM_FILE="${2:-$ROOT_DIR/captop-chrome.pem}"
 
 CHROME_DIR="$ROOT_DIR/captop-chrome"
@@ -34,24 +35,8 @@ if [ ! -f "$PEM_FILE" ]; then
     exit 1
 fi
 
-TEMP_DIR=$(mktemp -d)
-cd "$CHROME_DIR"
-zip -r "$TEMP_DIR/extension.zip" . -x ".*" > /dev/null
+npx crx pack "$CHROME_DIR" -o "$CHROME_CRX" -p "$PEM_FILE"
 
-# Sign
-openssl sha1 -sign "$PEM_FILE" < "$TEMP_DIR/extension.zip" > "$TEMP_DIR/sig"
-openssl rsa -pubout -outform DER < "$PEM_FILE" > "$TEMP_DIR/pub" 2>/dev/null
-
-# Build CRX package
-{
-    printf "Cr24"
-    printf '\x02\x00\x00\x00'
-    python3 -c "import struct,sys; pub=open('$TEMP_DIR/pub','rb').read(); sig=open('$TEMP_DIR/sig','rb').read(); sys.stdout.buffer.write(struct.pack('<II',len(pub),len(sig)))"
-    cat "$TEMP_DIR/pub" "$TEMP_DIR/sig" "$TEMP_DIR/extension.zip"
-} > "$CHROME_CRX"
-
-rm -rf "$TEMP_DIR"
-cd "$ROOT_DIR"
 echo "✅ Chrome .crx ready at $CHROME_CRX"
 
 
