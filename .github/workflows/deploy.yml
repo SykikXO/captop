@@ -33,6 +33,13 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            if docker ps --format "{{.Names}}" | grep -q "^captop-server$"; then
+              mkdir -p /tmp/malformed-dump
+              docker cp captop-server:/app/malformed /tmp/malformed-dump/
+              mkdir malformed
+              rsync -av /tmp/malformed-dump/malformed/ ./malformed/
+              rm -rf /tmp/malformed-dump
+            fi
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/captop-server:latest
             # Stop first to cancel restart policy, then remove
             docker stop captop-server 2>/dev/null || true
