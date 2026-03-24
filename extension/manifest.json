@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "VTOP Captcha Solver",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "Automatically solve captchas on VTOP login page",
   "permissions": [
     "storage"
