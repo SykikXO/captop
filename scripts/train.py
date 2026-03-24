@@ -123,7 +123,7 @@ def train():
     train_paths, val_paths = train_test_split(image_paths, test_size=0.2, random_state=42)
     
     train_transform = transforms.Compose([
-        transforms.RandomAffine(degrees=3, translate=(0.02, 0.05), scale=(0.95, 1.05)),
+        transforms.RandomAffine(degrees=3, translate=(0.02, 0.05), scale=(0.95, 1.05), fill=255),
         transforms.ToTensor(),
         transforms.Normalize((0.5,), (0.5,))
     ])

@@ -8,10 +8,34 @@
 let currentCaptchaBase64 = null;
 let currentPrediction = null;
 
+// Keys for sessionStorage
+const STORAGE_KEY_CAPTCHA = 'vtop_captcha_base64';
+const STORAGE_KEY_PREDICTION = 'vtop_captcha_prediction';
+
 /**
  * Initialize the solver when the page loads
  */
 async function init() {
+
+  // Check if we just reloaded from a failed login attempt
+  const savedCaptcha = sessionStorage.getItem(STORAGE_KEY_CAPTCHA);
+  const savedPrediction = sessionStorage.getItem(STORAGE_KEY_PREDICTION);
+
+  if (savedCaptcha && savedPrediction) {
+    // Look for error text in the body immediately on load
+    // We use innerText to capture rendered text, as VTOP may have multiple nested elements.
+    const bodyText = document.body.innerText?.toLowerCase() || '';
+    if (bodyText.includes('invalid') || bodyText.includes('wrong')) {
+      console.log('[CaptchaSolver] Detected error on page load, reporting saved captcha...');
+      currentCaptchaBase64 = savedCaptcha;
+      currentPrediction = savedPrediction;
+      await reportFailure();
+    } else {
+      // Clear storage if login was successful or navigated away
+      sessionStorage.removeItem(STORAGE_KEY_CAPTCHA);
+      sessionStorage.removeItem(STORAGE_KEY_PREDICTION);
+    }
+  }
 
   const captchaImg = document.querySelector('#captchaBlock img');
   const captchaInput = document.getElementById('captchaStr');
@@ -74,6 +98,11 @@ async function solveCaptcha() {
       }
 
       currentPrediction = response.text;
+      
+      // Save to sessionStorage to survive page reloads on bad submit
+      sessionStorage.setItem(STORAGE_KEY_CAPTCHA, currentCaptchaBase64);
+      sessionStorage.setItem(STORAGE_KEY_PREDICTION, response.text);
+
       hideLoadingBar(captchaInput, response.text);
       console.log(`[CaptchaSolver] Solved: ${response.text}`);
     });
@@ -119,7 +148,7 @@ function watchLoginResult() {
       for (const node of mutation.addedNodes) {
         if (node.nodeType === Node.ELEMENT_NODE) {
           const text = node.textContent?.toLowerCase() || '';
-          if (text.includes('invalid') || text.includes('captcha') || text.includes('wrong')) {
+          if (text.includes('invalid') || text.includes('wrong')) {
             reportFailure();
           }
         }
@@ -151,6 +180,8 @@ async function reportFailure() {
   // Clear to prevent duplicate reports
   currentCaptchaBase64 = null;
   currentPrediction = null;
+  sessionStorage.removeItem(STORAGE_KEY_CAPTCHA);
+  sessionStorage.removeItem(STORAGE_KEY_PREDICTION);
 }
 
 // Start

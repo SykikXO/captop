@@ -7,7 +7,7 @@ import glob
 
 # --- Configuration ---
 MODEL_PATH = "models/captcha_model.pth"
-TEST_DIR = "data/test"
+TEST_DIR = "api/failed/"
 IMG_WIDTH = 200
 IMG_HEIGHT = 40
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -100,7 +100,7 @@ def predict():
             results.append(f"{basename}: {prediction.upper()}")
             if(prediction.upper() != basename.split(".")[0].upper()):
                 print(f"{basename.split(".")[0]}: {prediction}")
-                #os.rename(img_path,TEST_DIR+"/"+prediction.upper()+".jpg")
+                #os.rename(img_path,"data/test/"+prediction.upper()+".jpg")
 
     with open("data/test_results.txt", "w") as f:
         f.write("\n".join(results))

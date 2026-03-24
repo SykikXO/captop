@@ -80,7 +80,7 @@ def main():
                 "image": {0: "batch_size"},
                 "output": {1: "batch_size"}
             },
-            opset_version=20,
+            opset_version=18,
             do_constant_folding=True,
         )
     

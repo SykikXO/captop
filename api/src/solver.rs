@@ -72,12 +72,7 @@ fn preprocess(data: &[u8]) -> Result<Array4<f32>, Box<dyn std::error::Error>> {
     let gray = img.to_luma8();
     let resized = image::imageops::resize(&gray, 200, 40, image::imageops::FilterType::Lanczos3);
 
-    let pixels: Vec<f32> = resized.iter().map(|&p| p as f32).collect();
-    let mean: f32 = pixels.iter().sum::<f32>() / pixels.len() as f32;
-    let std: f32 =
-        (pixels.iter().map(|p| (p - mean).powi(2)).sum::<f32>() / pixels.len() as f32).sqrt()
-            + 1e-5;
-    let normalized: Vec<f32> = pixels.iter().map(|p| (p - mean) / std).collect();
+    let normalized: Vec<f32> = resized.iter().map(|&p| (p as f32 / 255.0 - 0.5) / 0.5).collect();
 
     Ok(Array4::from_shape_vec((1, 1, 40, 200), normalized)?)
 }

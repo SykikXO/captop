@@ -36,14 +36,13 @@ jobs:
             if docker ps --format "{{.Names}}" | grep -q "^captop-server$"; then
               mkdir -p /tmp/malformed-dump
               docker cp captop-server:/app/malformed /tmp/malformed-dump/
-              mkdir malformed
+              mkdir -p malformed
               rsync -av /tmp/malformed-dump/malformed/ ./malformed/
               rm -rf /tmp/malformed-dump
             fi
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/captop-server:latest
             # Stop first to cancel restart policy, then remove
             docker stop captop-server 2>/dev/null || true
-            sleep 5
             docker rm -f captop-server 2>/dev/null || true
             # Run the new container
             docker run -d \
@@ -52,6 +51,20 @@ jobs:
               -e PORT=3000 \
               --restart unless-stopped \
               ${{ secrets.DOCKERHUB_USERNAME }}/captop-server:latest
+            # Health check — retry up to 10 times (30s total)
+            for i in $(seq 1 10); do
+              if curl -sf http://localhost:3000/health > /dev/null 2>&1; then
+                echo "Health check passed on attempt $i"
+                break
+              fi
+              if [ "$i" -eq 10 ]; then
+                echo "Health check failed after 10 attempts"
+                docker logs captop-server
+                exit 1
+              fi
+              echo "Waiting for container... attempt $i"
+              sleep 3
+            done
 
   release:
     if: startsWith(github.ref, 'refs/tags/v')
