@@ -48,31 +48,41 @@ class CaptchaModel(nn.Module):
 
 
 def main():
-    model_path = "captcha_model.pth"
-    onnx_path = "captcha_model.onnx"
+    import os
+    model_path = "models/captcha_model.pth"
+    onnx_path = "api/model/captcha_model.onnx"
     
+    os.makedirs(os.path.dirname(onnx_path), exist_ok=True)
     print(f"Loading PyTorch model from {model_path}...")
     model = CaptchaModel(VOCAB_SIZE)
     model.load_state_dict(torch.load(model_path, map_location="cpu"))
     model.eval()
     
+    # Fix RNN buffer copy warnings
+    model.rnn.flatten_parameters()
+    
     # Create dummy input: [batch, channels, height, width] = [1, 1, 40, 200]
     dummy_input = torch.randn(1, 1, 40, 200)
     
-    print(f"Exporting to ONNX format: {onnx_path}")
-    torch.onnx.export(
-        model,
-        dummy_input,
-        onnx_path,
-        input_names=["image"],
-        output_names=["output"],
-        dynamic_axes={
-            "image": {0: "batch_size"},
-            "output": {1: "batch_size"}
-        },
-        opset_version=14,
-        do_constant_folding=True,
-    )
+    print(f"Exporting to ONNX format (opset 20): {onnx_path}")
+    
+    import warnings
+    with warnings.catch_warnings():
+        warnings.filterwarnings("ignore", category=UserWarning)
+        warnings.filterwarnings("ignore", category=FutureWarning)
+        torch.onnx.export(
+            model,
+            dummy_input,
+            onnx_path,
+            input_names=["image"],
+            output_names=["output"],
+            dynamic_axes={
+                "image": {0: "batch_size"},
+                "output": {1: "batch_size"}
+            },
+            opset_version=20,
+            do_constant_folding=True,
+        )
     
     print(f"✓ Successfully exported to {onnx_path}")
     

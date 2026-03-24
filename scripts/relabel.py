@@ -1,3 +1,4 @@
+# use ollama model locally to identify captchas and relabel them
 import os
 import cv2
 import shutil

@@ -6,7 +6,7 @@ import sys
 # Add the project root to sys.path so 'scripts' can be imported
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from scripts.train_model import CaptchaModel, VOCAB_SIZE
+from scripts.train import CaptchaModel, VOCAB_SIZE
 
 def quantize_to_int8(model_path, save_path):
     print(f"Loading model from {model_path}...")

@@ -6,6 +6,8 @@ import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
 import cv2
 import numpy as np
+import torchvision.transforms as transforms
+from PIL import Image
 from sklearn.model_selection import train_test_split
 from torch.utils.tensorboard import SummaryWriter
 
@@ -33,8 +35,9 @@ def encode_label(label):
 
 # --- Dataset ---
 class CaptchaDataset(Dataset):
-    def __init__(self, image_paths):
+    def __init__(self, image_paths, transform=None):
         self.image_paths = image_paths
+        self.transform = transform
 
     def __len__(self):
         return len(self.image_paths)
@@ -42,18 +45,20 @@ class CaptchaDataset(Dataset):
     def __getitem__(self, idx):
         img_path = self.image_paths[idx]
         image = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
-        image = image.astype(np.float32)
-        image = (image - np.mean(image)) / (np.std(image) + 1e-5)
         
-        # [H, W] -> [1, H, W]
-        image = np.expand_dims(image, axis=0)
+        image = Image.fromarray(image)
+        if self.transform:
+            image = self.transform(image)
+        else:
+            image = transforms.ToTensor()(image)
+            image = transforms.Normalize((0.5,), (0.5,))(image)
         
         # Extract label from filename (stripping _1 etc for duplicates)
-        label_str = os.path.basename(img_path).split(".")[0].split("_")[0]
+        label_str = os.path.basename(img_path).split(".")[0]
         label = torch.tensor(encode_label(label_str), dtype=torch.long)
         label_len = torch.tensor(len(label), dtype=torch.long)
         
-        return torch.tensor(image), label, label_len
+        return image, label, label_len
 
 def collate_fn(batch):
     images, labels, label_lens = zip(*batch)
@@ -117,8 +122,18 @@ def train():
     image_paths = glob.glob(os.path.join(DATA_DIR, "*.jpg"))
     train_paths, val_paths = train_test_split(image_paths, test_size=0.2, random_state=42)
     
-    train_ds = CaptchaDataset(train_paths)
-    val_ds = CaptchaDataset(val_paths)
+    train_transform = transforms.Compose([
+        transforms.RandomAffine(degrees=3, translate=(0.02, 0.05), scale=(0.95, 1.05)),
+        transforms.ToTensor(),
+        transforms.Normalize((0.5,), (0.5,))
+    ])
+    val_transform = transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize((0.5,), (0.5,))
+    ])
+    
+    train_ds = CaptchaDataset(train_paths, transform=train_transform)
+    val_ds = CaptchaDataset(val_paths, transform=val_transform)
     
     train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True, collate_fn=collate_fn)
     val_loader = DataLoader(val_ds, batch_size=BATCH_SIZE, shuffle=False, collate_fn=collate_fn)
@@ -126,6 +141,7 @@ def train():
     model = CaptchaModel(VOCAB_SIZE).to(DEVICE)
     criterion = nn.CTCLoss(blank=0, zero_infinity=True)
     optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE)
+    scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=4)
     writer = SummaryWriter('runs/captcha_experiment')
     
     best_val_loss = float('inf')
@@ -169,6 +185,8 @@ def train():
         writer.add_scalar('Loss/val', avg_val_loss, epoch)
         
         print(f"Epoch {epoch+1}/{NUM_EPOCHS}, Train Loss: {avg_train_loss:.4f}, Val Loss: {avg_val_loss:.4f}")
+        
+        scheduler.step(avg_val_loss)
         
         if avg_val_loss < best_val_loss:
             best_val_loss = avg_val_loss

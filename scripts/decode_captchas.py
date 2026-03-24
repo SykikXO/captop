@@ -87,8 +87,8 @@ def predict():
     with torch.no_grad():
         for img_path in test_images:
             image = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
-            image = image.astype(np.float32)
-            image = (image - np.mean(image)) / (np.std(image) + 1e-5)
+            image = image.astype(np.float32) / 255.0
+            image = (image - 0.5) / 0.5
             image = np.expand_dims(image, axis=0) # [1, H, W]
             image = np.expand_dims(image, axis=0) # [1, 1, H, W]
             
@@ -98,7 +98,9 @@ def predict():
             
             basename = os.path.basename(img_path)
             results.append(f"{basename}: {prediction.upper()}")
-            print(f"{basename}: {prediction}")
+            if(prediction.upper() != basename.split(".")[0].upper()):
+                print(f"{basename.split(".")[0]}: {prediction}")
+                #os.rename(img_path,TEST_DIR+"/"+prediction.upper()+".jpg")
 
     with open("data/test_results.txt", "w") as f:
         f.write("\n".join(results))
