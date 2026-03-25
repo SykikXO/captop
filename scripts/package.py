@@ -1,3 +1,4 @@
+#python script to package the project for deployment on pythonanywhere (crowdsourcing part)
 import zipfile
 import os
 

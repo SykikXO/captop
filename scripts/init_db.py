@@ -1,3 +1,4 @@
+#python script to initialize the crowdsourcing database and populate images
 import os
 import sqlite3
 
