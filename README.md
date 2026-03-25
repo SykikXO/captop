@@ -5,58 +5,27 @@
 
 **Captop** is a complete, open-source pipeline for researchers and ML enthusiasts to understand how to collect, label, and train models on real-world captcha data.
 
-## Installation Guide
+Since this project is practically complete (capturing captchas, acquiring labels via crowdsourcing, training the model, deploying the API via Docker on a DigitalOcean Droplet with GitHub Actions auto-deployment, and publishing the extension to the Firefox Add-ons store), I will be archiving it. If you're exploring this in the future, you can use it as a reference for getting started with curating datasets (the hardest part of ML) and deploying models (the easy part!).
 
-The model is available as a browser extension to auto-solve captchas directly on the VTOP login page!
+I will continue working with these captchas outside of this repository, as I plan to create an open-source Android application for VTOP (you can do a lot with hidden WebViews in Android, and AI!).
 
-### Browser & Platform Compatibility
+## Browser Extension
 
-| Platform | Browser | Install Method | Status |
-|:---|:---|:---|:-------|
-| ![Windows](https://img.shields.io/badge/Windows-0078D4?style=flat-square&logo=windows&logoColor=white) ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white) ![macOS](https://img.shields.io/badge/macOS-000000?style=flat-square&logo=apple&logoColor=white) ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black) | ![Firefox](https://img.shields.io/badge/Firefox-FF7139?style=flat-square&logo=firefoxbrowser&logoColor=white) | [Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/) | ✅ ⭐ Recommended |
-| ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white) | ![Quetta](https://img.shields.io/badge/Quetta-4A90D9?style=flat-square&logoColor=white) | `.crx` direct install | ✅ ⭐ Recommended |
-| ![Windows](https://img.shields.io/badge/Windows-0078D4?style=flat-square&logo=windows&logoColor=white) ![macOS](https://img.shields.io/badge/macOS-000000?style=flat-square&logo=apple&logoColor=white) ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black) | ![Chrome/Edge](https://img.shields.io/badge/Chrome-4285F4?style=flat-square&logo=googlechrome&logoColor=white) ![Brave](https://img.shields.io/badge/Brave-FB542B?style=flat-square&logo=brave&logoColor=white) ![Opera](https://img.shields.io/badge/Opera-FF1B2D?style=flat-square&logo=opera&logoColor=white) ![Vivaldi](https://img.shields.io/badge/Vivaldi-EF3939?style=flat-square&logo=vivaldi&logoColor=white) | `.zip` → Load unpacked | ✅ Works |
----
+<div align="center">
+  <img src="extension/extension.gif" alt="Extension Demo" width="400" />
+</div>
 
-### ![Firefox](https://img.shields.io/badge/Firefox-FF7139?style=flat-square&logo=firefoxbrowser&logoColor=white) Firefox (Desktop & Android) — ⭐ Recommended
+The model is distributed as a browser extension to auto-solve captchas directly on the VTOP login page.
 
-Install directly from the official Add-ons store — works on both desktop and mobile Firefox:
-
-> **[⬇️ Download: VTOP Captcha Bye Bye](https://addons.mozilla.org/en-US/firefox/addon/vtop-captcha-bye-bye/)**
-
----
-
-### ![Chrome](https://img.shields.io/badge/Chromium-4285F4?style=flat-square&logo=googlechrome&logoColor=white) Chromium-based Browsers (Desktop)
-
-Works on ![Chrome](https://img.shields.io/badge/Chrome-4285F4?style=flat-square&logo=googlechrome&logoColor=white) ![Edge](https://img.shields.io/badge/Edge-0078D7?style=flat-square&logo=microsoftedge&logoColor=white) ![Brave](https://img.shields.io/badge/Brave-FB542B?style=flat-square&logo=brave&logoColor=white) ![Vivaldi](https://img.shields.io/badge/Vivaldi-EF3939?style=flat-square&logo=vivaldi&logoColor=white) ![Opera](https://img.shields.io/badge/Opera-FF1B2D?style=flat-square&logo=opera&logoColor=white). (Basically any Chromium-based browser.)
-
-1. Go to the [**Releases**](https://github.com/SykikXO/captop/releases) page and download `captop-chrome-vX.X.X.zip`
-2. **Extract** the `.zip` into a folder
-3. Open your browser and navigate to `chrome://extensions` (or `edge://extensions`, `brave://extensions`, etc.)
-4. Toggle **Developer mode** ON (top-right corner)
-5. Click **"Load unpacked"** and select the extracted folder
-6. Done! Navigate to VTOP login and the extension will auto-solve captchas.
-
----
-
-### ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white) Android (Chromium-based)
-
-Several Android browsers support Chrome extensions via `.crx` files:
-
-**![Quetta](https://img.shields.io/badge/Quetta-4A90D9?style=flat-square&logoColor=white) Quetta Browser — ⭐ Recommended:**
-
-1. Download `captop-chrome.crx` from the [**Releases**](https://github.com/SykikXO/captop/releases) page
-2. Open Quetta, tap the **⋮ menu** → **Extensions** (puzzle icon)
-3. Tap **"Install extension"** → select **"From .crx/.zip/.user.js"**
-4. Choose the downloaded `.crx` file — the extension will be installed!
+**[➡️ View Extension Installation Guide](extension/README.md)**
 
 ## The Story
 
 This project started as a personal journey to learn Machine Learning. I wanted to work on something "unexplored" and real.
 
 1. **The Hunt**: I used some **JS-hackery** to scrape and collect a raw dataset of captchas directly from my college's website.
-2. **The Crowdsource**: Since the data was unlabeled, I built a lightweight, full-stack application to crowdsource the labels. This allowed friends and contributors to help build the ground truth dataset.
-3. **The Result**: After collecting over 800 labels and training a high-performance **CRNN (CNN+GRU)** model, I've reached the goal. The model now decodes these captchas with near 100% accuracy.
+2. **The Crowdsource**: Since the data was unlabeled, first I tried to get labels using the `Qwen3-VL 4B` model running on my old laptop, but that was not accurate (also slow, like 20 images in about 8 hrs, and those were wrong smh!!). Then, I built a lightweight, full-stack application (using Gemini 3.1 Pro) to crowdsource the labels. This allowed friends and contributors to help build the ground truth dataset.
+3. **The Result**: After collecting over 800 labels and training a high-performance **CRNN (CNN+GRU)** model, I've reached the goal. The model now decodes these captchas with near 100% accuracy (actually 99.89%).
 
 Now that the mission is complete, I've made the entire stack—from the scraping logic to the final trained model—**fully open-source**.
 
@@ -64,29 +33,34 @@ Now that the mission is complete, I've made the entire stack—from the scraping
 
 ## Project Structure
 
-- **data/**: Labeled captcha datasets (Available as 200, 500, and 811 image zips).
-- **models/**: The final trained weights (`.pth`), performance charts, and quantization scripts.
-- **scripts/**: The core logic for training, decoding, and data utility.
-- **crowdsource/**: The Flask-based crowdsourcing platform and analytics dashboard.
+- **extension/**: The browser extension for auto-solving captchas on VTOP.
+- **api/**: The Rust-based high-performance backend API for inferencing ONNX models in production.
+- **data/**: Labeled datasets (`captchas/`, `test/`) and the final trained weights (`models/`).
+- **scripts/**: The core logic for training, decoding, exporting, and data utility.
+- **crowdsource/**: The Flask-based crowdsourcing platform used initially to collect labels.
 - **worker/**: Cloudflare Worker proxy configuration.
 
 ## Dataset
 
 Access the labeled data for your own projects:
-- `data/captchas/dataset_811.zip`: The full labeled dataset (811 images).
-- `data/dataset_test.zip`: Unlabeled images used for final model verification.
+- `data/captchas`: The full labeled dataset (995 images).
+- `data/test`: Some labeled test images on which the model produced malformed outputs.
 
 ## Performance & Usage
 
-The model achieves a **Validation Loss: 0.0013**. 
-- See **[models/README.md](models/README.md)** for loss charts and benchmarks.
+The model achieves a **Validation Loss: 0.0038**. 
+- See **[data/models/README.md](data/models/README.md)** for loss charts and benchmarks.
 - See **[MODEL_USAGE.md](MODEL_USAGE.md)** for pseudo-code on how to integrate the model into your own scripts.
 
 ## Analytics
 
-Detailed insights from the crowdsourcing phase:
+Cool insights from the crowdsourcing phase:
 - **[View Analytics Report](crowdsource/log_analysis.md)** — Contributor stats, traffic maps, and system performance.
-- `crowdsource/india_map.svg` — Geographic distribution of our contributors.
+
+<div align="center">
+  <img src="crowdsource/india_map.svg" alt="Crowdsource-IP geolocation" width="400" />
+</div>
+
 
 ## Contributors
 
@@ -134,3 +108,10 @@ A huge thanks to all the amazing people who helped crowdsource the data labels. 
 - Vijay Naveen Mishra
 - [Virat Nigam](https://github.com/viratnigam18)
 - [Yash Priyam](https://github.com/Raunak-24)
+
+# AI Disclosure
+
+This project was developed with significant assistance from AI agents. The following models were used:
+
+- **Gemini 3.1 Pro**
+- **Claude Opus 4.6**
