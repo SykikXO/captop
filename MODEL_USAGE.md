@@ -1,11 +1,25 @@
-# Using the Captcha Model (Pseudo-code)
+# Using the Captcha Model
 
-To use the trained model for inference in your own Python script, follow these steps:
+There are two primary ways to consume the CAPTCHA model depending on your use-case: the **Production Rust API** (using the ONNX export) and the **PyTorch Pipeline** (for training/evaluation scripts).
 
-### 1. Define the Architecture
-You must use the exact `CaptchaModel` class defined in `scripts/train_model.py`. The weights are tied to this specific layer structure.
+## 1. Production Rust API (Recommended)
 
-### 2. Implementation Guide
+The `api/` directory contains a high-performance Rust server designed for production deployment. It serves the exported `.onnx` model (`api/model/captcha_model.onnx`).
+
+### Usage
+- The Rust server handles image preprocessing natively and performs inference via the ONNX runtime.
+- For serving the production API, build and run the Rust project in `api/`. (The crowdsourcing backend in `crowdsource/` was used separately for data collection).
+
+---
+
+## 2. Python/PyTorch Pipeline (For Training & Dev)
+
+If you need to use the trained PyTorch model for inference or evaluation in your own Python script, follow these steps:
+
+### 2.1 Define the Architecture
+You must use the exact `CaptchaModel` class defined in `scripts/train.py`. The weights are tied to this specific layer structure.
+
+### 2.2 Implementation Guide
 
 ```python
 import torch
@@ -26,7 +40,7 @@ image = cv2.imread("path_to_captcha.jpg", cv2.IMREAD_GRAYSCALE)
 image = image.astype(np.float32)
 
 # IMPORTANT: Use the same normalization used in training
-image = (image - np.mean(image)) / (np.std(image) + 1e-5)
+image = (image / 255.0 - 0.5) / 0.5
 
 # Add batch and channel dimensions: [1, 1, 40, 200]
 input_tensor = torch.tensor(image).unsqueeze(0).unsqueeze(0)
@@ -45,14 +59,16 @@ prediction = my_decode_function(outputs)
 print(prediction.upper())
 ```
 
-### 3. Requirements
+### 2.3 Requirements
 - `torch`
 - `numpy`
 - `opencv-python`
 
+---
+
 ## Model Specifications
 
-Based on the implementation in `scripts/train_model.py`, here are the detailed technical specifications of the trained CAPTCHA model:
+Based on the implementation in `scripts/train.py`, here are the detailed technical specifications of the trained CAPTCHA model:
 
 ### 1. Overall Architecture
 The model is a **CRNN (Convolutional Recurrent Neural Network)** built using PyTorch. It uses a CNN backbone for feature extraction from the image and a Bidirectional GRU (RNN) for sequence prediction, optimized using **CTC (Connectionist Temporal Classification)** loss.
@@ -60,7 +76,7 @@ The model is a **CRNN (Convolutional Recurrent Neural Network)** built using PyT
 ### 2. Input Specifications
 *   **Format:** Grayscale images (1 channel)
 *   **Dimensions:** 200 pixels (width) × 40 pixels (height)
-*   **Preprocessing:** Each image is normalized to have a mean of 0 and a standard deviation of 1 `(image - mean) / (std + 1e-5)`.
+*   **Preprocessing:** Each image is normalized from 0-255 down to -1 to 1 using the linear transformation `(image / 255.0 - 0.5) / 0.5`.
 
 ### 3. CNN Feature Extractor (Vision)
 The CNN reduces the image down to a sequence of feature maps. It consists of 4 main convolutional blocks:
@@ -92,4 +108,3 @@ The output of the CNN is a feature map of shape `[Batch, 512 channels, 2 height,
 *   **Batch Size:** 16
 *   **Epochs:** 50
 *   **Validation Split:** 20% of the dataset (`test_size=0.2` with a fixed random seed of 42).
-
