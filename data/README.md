@@ -2,6 +2,6 @@
 
 This directory stores images and generated data.
 
-- **captchas/**: Raw captcha images that need labeling. (about 800 images)
-- **test/**: Images used for model verification. (about 200 images)
-- **training/**: Target directory for future training outputs. (nothing here, at least for now)
+- **captchas/**: Labeled captchas used for training. (about 995 images)
+- **test/**: Labeled captchas that the model produced malformed output on. (about 45-50 images)
+- **models/**: Trained model weights.
